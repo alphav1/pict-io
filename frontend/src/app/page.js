@@ -3,14 +3,15 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Link from 'next/link';
+import Topbar from './components/topbar';
 
 let socket;
 
 export default function HomePage() {
   const [rooms, setRooms] = useState([
-    { id: '1.220', users: ['User 1', 'User 2'] },
-    { id: '3.55', users: ['User 1...'] },
-    { id: '3.79%', users: [] }
+    { id: '1', users: ['User 1', 'User 2'] },
+    { id: '2', users: ['User 1...'] },
+    { id: '3', users: [] }
   ]);
 
   const [leaderboard, setLeaderboard] = useState([
@@ -53,18 +54,8 @@ export default function HomePage() {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Pict-IO</h1>
-        <div className="flex space-x-4">
-          <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Profile
-          </button>
-          <button className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
-            Settings
-          </button>
-        </div>
-      </div>
+      {/* Use the Topbar component instead of the inline header */}
+      <Topbar />
       
       {/* Three Vertical Sections */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
